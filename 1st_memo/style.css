@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#user-name {
+  border: none;
+  border-bottom: 1px solid #dedede;
+  margin: 2em 0;
+  padding: 1em 10px 5px 10px;
+}
+
+#memo-txt {
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.wrapper .submit-btn {
+  margin: 2em 0;
+  border: none;
+  border-radius: 15px;
+  padding: .7em 1.5em;
+  font-size: 16px;
+  background-color:rgba(121, 170, 125, 0.623);
+  cursor: pointer;
+}
+
+.wrapper .delete-btn {
+  padding: .5em 1em;
+  margin-left: 10px;
+  border: none;
+  border-radius: 15px;
+  font-size: 13px;
+  background-color:rgba(255, 85, 85, 0.623);
+  cursor: pointer;
+}

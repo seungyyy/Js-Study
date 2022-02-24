@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-box {
+  width: 750px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.carousel-box .carousel-slider {
+  display: flex;
+}
+
+.carousel-slider .slider-img {
+  width: 750px;
+  height: 500px;
+  object-fit: cover;
+}
+
+#arr-laft {
+  transform: scaleX(-1);
+}
+
+.btn {
+  position: relative;
+}
+
+#left-btn, #right-btn {
+  position: absolute;
+  top: 50%;
+  transform:translateY(-50%);
+  background-color: inherit;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#left-btn {
+  left: 1em;
+}
+
+#right-btn {
+  right: 1em;
+}

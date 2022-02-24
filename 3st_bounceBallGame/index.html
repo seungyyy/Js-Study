@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto; 
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .count-txt {
+      position: absolute;
+      display: block;
+      top: 2em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 4em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="720" height="500"></canvas>
+  <p class="count-txt"></p>
+  <script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+    let count = 0;
+    const start = new Date().getSeconds();
+
+    function randomball(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+    function randomColor() {
+      return `rgb(${randomball(0, 255)}, ${randomball(0, 255)}, ${randomball(0, 255)})`;
+    }
+
+
+    class Ball {
+      constructor(x, y, velX, velY, color, size, num) {
+        this.x = x;
+        this.y = y;
+        this.velX = velX;
+        this.velY = velY;
+        this.color = color;
+        this.size = size;
+        this.get = true;
+        this.num = num;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      update() {
+        if ((this.x + this.size) >= width || (this.x + this.size) <= 0 ) {
+          this.velX = -(this.velX);
+        }
+
+        if ((this.y + this.size) >= height || (this.y + this.size) <= 0) {
+          this.velY = -(this.velY);
+        }
+
+        this.x += this.velX;
+        this.y += this.velY;
+      }
+
+      collisionDetect() {
+        for (const ball of balls) {
+          if (!(this === ball) && this.get) {
+            const dx = this.x - ball.x;
+            const dy = this.y - ball.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+          } else if (!this.get) {
+            num--;
+            console.log(count);
+          }
+
+        }
+      }
+    }
+
+    const balls = [];
+
+      this.num = 10;
+      while (count < num) {
+        const size = 50;
+        const ball = new Ball(
+          randomball(0 + size, width - size),
+          randomball(0 + size, height - size),
+          randomball(-7, 7),
+          randomball(-7, 7),
+          randomColor(),
+          size
+        );
+        count++;
+        console.log(count)
+        balls.push(ball);
+      }
+  
+    function loop() {
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.clearRect(0, 0, width, height);
+      for (const ball of balls) {
+        if (ball.get) {
+          ball.draw();
+          ball.update();
+          ball.collisionDetect();
+        } 
+        window.addEventListener('click', e => {
+          if (ball.x === e.clientX || ball.y === e.clientY) {
+              ball.get = false;
+              num--;
+            }
+          }
+          )
+      }
+      (function () {
+        let time = new Date().getSeconds();
+        setTimeout(()=> {
+          if (time < start) {
+            document.querySelector('.count-txt').textContent = 'Time Over';
+            console.log('end');
+          } else {
+            requestAnimationFrame(loop);
+          }
+        }, 15);
+      })();
+      
+    }
+    loop();
+
+  </script>
+</body>
+</html>
