@@ -17,8 +17,7 @@ function imgTransitionEnd() {
     currentIndex = imgs.length - currentIndex;
     sliders.style.transform = 'translateX(' + currentIndex * -size + 'px)';
   }
-  if (imgs[currentIndex].id === 'last-img') { 
-    console.log(currentIndex);
+  if (imgs[currentIndex].id === 'last-img') {
     sliders.style.transition = 'none';
     currentIndex = imgs.length - 2;
     sliders.style.transform = 'translateX(' + currentIndex * -size + 'px)';
