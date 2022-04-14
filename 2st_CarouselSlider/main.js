@@ -18,10 +18,7 @@ function imgTransitionEnd() {
     sliders.style.transform = 'translateX(' + currentIndex * -size + 'px)';
   }
   if (imgs[currentIndex].id === 'last-img') { 
-<<<<<<< HEAD
     console.log(currentIndex);
-=======
->>>>>>> f140ec91015fff061c908e1c10e0fd19a3171538
     sliders.style.transition = 'none';
     currentIndex = imgs.length - 2;
     sliders.style.transform = 'translateX(' + currentIndex * -size + 'px)';
